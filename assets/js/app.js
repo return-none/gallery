@@ -1,1 +1,2 @@
-var gallery = angular.module('Gallery', ['ngRoute', 'ngResource']);
+angular
+.module('Gallery', ['Gallery.Router', 'Gallery.Factories', 'Gallery.Controllers']);
