@@ -1,3 +1,80 @@
+<div class="navbar navbar-default" role="navigation">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle btn navbar-btn" ng-init="navCollapsed = true"
+                ng-click="navCollapsed = !navCollapsed">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" ng-href="/#/">Gallery</a>
+    </div>
+    <div collapse="navCollapsed" class="navbar-collapse collapse navbar-responsive-collapse">
+        <form class="navbar-form navbar-left" role="search">
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="Search">
+            </div>
+            <button type="submit" class="btn btn-default">Submit</button>
+        </form>
+        <button type="button" class="btn btn-default navbar-btn pull-right" ng-click="new_artwork()">New</button>
+    </div>
+</div>
+
+<div class="artwork text-center" ng-if="newArtwork">
+    <div class="row new-artwork-header">
+        <div class="col-md-3 col-sm-3 col-xs-3">Artist & Title & Date</div>
+        <div class="col-md-3 col-sm-3 col-xs-3">Medium & Material</div>
+        <div class="col-md-2 col-sm-2 col-xs-2">Dimensions & Color</div>
+        <div class="col-md-2 col-sm-2 col-xs-2">Price</div>
+        <div class="col-md-2 col-sm-2 col-xs-2"></div>
+    </div>
+    <div class="row new-artwork-header">
+        <div class="col-md-3 col-sm-3 col-xs-3">
+            <input type="text" class="form-control" placeholder="Title" ng-model="newArtwork.title">
+            <input type="text" class="form-control" placeholder="Artist" ng-model="newArtwork.artist">
+            <input type="text" class="form-control" placeholder="Year" ng-model="newArtwork.year">
+        </div>
+        <div class="col-md-3 col-sm-3 col-xs-3">
+            <select ng-options="medium.id as medium.name for medium in mediums" ng-model="newArtwork.medium_id"></select>
+        </div>
+        <div class="col-md-2 col-sm-2 col-xs-2">
+            <input type="text" class="form-control" placeholder="Dimension 1" ng-model="newArtwork.dimension1">
+            <input type="text" class="form-control" placeholder="Dimension 2" ng-model="newArtwork.dimension2">
+            <input type="text" class="form-control" placeholder="Dimension 3" ng-model="newArtwork.dimension3" ng-if="newArtwork.medium_id == 2">
+            <select ng-options="dimension for dimension in ['cm', 'inches']" ng-model="newArtwork.dimension"></select>
+        </div>
+        <div class="col-md-2 col-sm-2 col-xs-2">
+            <table class="table table-bordered">
+                <tr>
+                    <td colspan="2">
+                        <input type="text" class="form-control" placeholder="Price" ng-model="newArtwork.price">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label class="checkbox-inline">
+                            <input type="checkbox" id="checkbox-net"> Net
+                        </label>
+                        <label class="checkbox-inline">
+                            <input type="checkbox" id="checkbox-gross"> Gross
+                        </label>
+                    </td>
+                    <td>
+                        <input type="text" class="form-control" placeholder="VAT" ng-model="newArtwork.vat"> %
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="col-md-2 col-sm-2 col-xs-2">
+            <button class="btn btn-success" ng-click="save_new_artwork()">Save</button>
+            <button class="btn btn-danger" ng-click="cancel_new_artwork()">Delete</button>
+        </div>
+    </div>
+    <div class="row">
+        <textarea class="form-control" rows="3" ng-model="newArtwork.description"></textarea>
+    </div>
+</div>
+
 <div class="artwork text-center" ng-repeat="artwork in artworks track by $index">
     <div class="row">
         <div class="col-md-3 col-sm-3 col-xs-3">

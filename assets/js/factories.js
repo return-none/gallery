@@ -14,14 +14,19 @@ angular
                 return data;
             }
         },
+        save: {
+            method: "POST",
+            transformRequest: function (data, headers) {
+                data.medium = rootURL + 'mediums/' + data.medium_id;
+                data.includes_vat = data.vat == 0 ? false : true;
+                data.dimensions_in_cm = data.dimension === 'cm' ? true : false;
+                return angular.toJson(data);
+            }
+        },
         update: {
             method: "PUT",
             transformRequest: function (data, headers) {
                 data.medium = rootURL + 'mediums/' + data.medium_id;
-                delete data.medium_id;
-                if (data.medium_name) {
-                    delete data.medium_name;
-                }
                 return angular.toJson(data);
             }
         }
