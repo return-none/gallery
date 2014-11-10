@@ -11,4 +11,26 @@ angular
             method: "PUT"
         }
     });
+}])
+.factory('Mediums', ['$resource', 'rootURL', function ($resource, rootURL) {
+    return $resource(rootURL + 'mediums/:id', {}, {
+        query: {
+            method: "GET",
+            isArray: false
+        },
+        save: {
+            method: "POST"
+        }
+    });
+}])
+.factory('Materials', ['$resource', 'rootURL', function ($resource, rootURL) {
+    return $resource(rootURL + 'materials/:id', {}, {
+        query: {
+            method: "GET",
+            isArray: false
+        },
+        save: {
+            method: "POST"
+        }
+    });
 }]);
