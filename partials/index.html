@@ -38,10 +38,10 @@
         <p ng-show="show_more">
             {{artwork.description}}
         </p>
-        <p ng-click="show_more=false" ng-show="show_more">
+        <p ng-click="show_more=false" ng-show="show_more" class="expander">
             Show less
         </p>
-        <p ng-click="show_more=true" ng-show="!show_more">
+        <p ng-click="show_more=true" ng-show="!show_more" class="expander">
             Show more
         </p>
     </div>

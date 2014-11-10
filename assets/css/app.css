@@ -14,3 +14,7 @@ body {
 .artwork .dimension3 {
     margin-left: -4px;
 }
+
+.artwork .expander {
+    cursor: pointer;
+}
