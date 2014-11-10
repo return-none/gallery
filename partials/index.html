@@ -1,1 +1,48 @@
-{{artworks | json}}
+<div class="artwork text-center" ng-repeat="artwork in artworks">
+    <div class="row">
+        <div class="col-md-3 col-sm-3 col-xs-3">
+            <h3>{{artwork.title}}</h3>
+            <p>{{artwork.artist}}</p>
+            <p>{{artwork.year}}</p>
+        </div>
+        <div class="col-md-3 col-sm-3 col-xs-3">
+            here be materials and medium
+        </div>
+        <div class="col-md-2 col-sm-2 col-xs-2">
+            {{artwork.dimension1}}x{{artwork.dimension2}}
+            <span ng-if="artwork.dimension3" class="dimension3">x{{artwork.dimension3}}</span>
+            <span ng-if="artwork.dimensions_in_cm">cm</span>
+        </div>
+        <div class="col-md-2 col-sm-2 col-xs-2">
+            <table class="table table-bordered">
+                <tr>
+                    <td colspan="2">
+                        {{artwork.price}}
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Net
+                    </td>
+                    <td>
+                        {{artwork.vat}} %
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="col-md-2 col-sm-2 col-xs-2">
+            <button class="btn btn-danger" ng-click="delete(artwork)">Delete</button>
+        </div>
+    </div>
+    <div class="row" ng-init="show_more = false">
+        <p ng-show="show_more">
+            {{artwork.description}}
+        </p>
+        <p ng-click="show_more=false" ng-show="show_more">
+            Show less
+        </p>
+        <p ng-click="show_more=true" ng-show="!show_more">
+            Show more
+        </p>
+    </div>
+</div>

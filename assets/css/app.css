@@ -1,0 +1,16 @@
+body {
+    padding-top: 20px;
+}
+
+.artwork {
+    padding-top: 20px;
+    border-bottom: 2px solid #eee;
+}
+
+.artwork:last-child {
+    border-bottom: none;
+}
+
+.artwork .dimension3 {
+    margin-left: -4px;
+}
