@@ -37,15 +37,4 @@ angular
             method: "POST"
         }
     });
-}])
-.factory('Materials', ['$resource', 'rootURL', function ($resource, rootURL) {
-    return $resource(rootURL + 'materials/:id', {id: "@id"}, {
-        query: {
-            method: "GET",
-            isArray: false
-        },
-        save: {
-            method: "POST"
-        }
-    });
 }]);

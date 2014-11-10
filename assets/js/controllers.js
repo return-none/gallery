@@ -1,7 +1,6 @@
 angular
 .module('Gallery.Controllers', [])
-.controller('MainCtrl', ['$scope', 'artworks', 'mediums', 'materials',
-    function ($scope, artworks, mediums, materials) {
+.controller('MainCtrl', ['$scope', 'artworks', 'mediums', function ($scope, artworks, mediums) {
         $scope.artworks = artworks.map(function (artwork) {
             artwork.medium_name = mediums.filter(function (medium) {
                 return medium.id == artwork.medium_id;
@@ -9,7 +8,6 @@ angular
             return artwork;
         });
         $scope.mediums = mediums;
-        $scope.materials = materials;
 
         $scope.delete = function (artwork_index) {
             var artwork = $scope.artworks[artwork_index];

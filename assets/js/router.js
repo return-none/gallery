@@ -16,7 +16,7 @@ angular
                     });
                     $q.all(promises).then(function (responses) {
                         deferred.resolve(responses);
-                    })
+                    });
                 });
                 return deferred.promise;
             }],
@@ -27,20 +27,6 @@ angular
                         // id parse
                         var id = url.match(/\/mediums\/(\d+)/)[1];
                         return Mediums.get({id: id}).$promise;
-                    });
-                    $q.all(promises).then(function (responses) {
-                        deferred.resolve(responses);
-                    })
-                });
-                return deferred.promise;
-            }],
-            materials: ['$q', 'Materials', function ($q, Materials) {
-                var deferred = $q.defer();
-                Materials.query().$promise.then(function (repsonse) {
-                    var promises = repsonse.urls.map(function (url) {
-                        // id parse
-                        var id = url.match(/\/materials\/(\d+)/)[1];
-                        return Materials.get({id: id}).$promise;
                     });
                     $q.all(promises).then(function (responses) {
                         deferred.resolve(responses);
