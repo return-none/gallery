@@ -1,4 +1,4 @@
-<div class="artwork text-center" ng-repeat="artwork in artworks">
+<div class="artwork text-center" ng-repeat="artwork in artworks track by $index">
     <div class="row">
         <div class="col-md-3 col-sm-3 col-xs-3">
             <h3>{{artwork.title}}</h3>
@@ -31,7 +31,7 @@
             </table>
         </div>
         <div class="col-md-2 col-sm-2 col-xs-2">
-            <button class="btn btn-danger" ng-click="delete(artwork)">Delete</button>
+            <button class="btn btn-danger" ng-click="delete($index)">Delete</button>
         </div>
     </div>
     <div class="row" ng-init="show_more = false">

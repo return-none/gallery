@@ -10,4 +10,13 @@ angular
         });
         $scope.mediums = mediums;
         $scope.materials = materials;
+
+        $scope.delete = function (artwork_index) {
+            var artwork = $scope.artworks[artwork_index];
+            if (confirm("Delete " + artwork.title + "?")) {
+                artwork.$delete(function () {
+                    $scope.artworks.splice(artwork_index, 1);
+                });
+            }
+        }
 }]);

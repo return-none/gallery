@@ -2,7 +2,7 @@ angular
 .module('Gallery.Factories', ['ngResource'])
 .constant('rootURL', 'http://54.77.217.175/')
 .factory('Artworks', ['$resource', 'rootURL', function ($resource, rootURL) {
-    return $resource(rootURL + 'artworks/:id', {}, {
+    return $resource(rootURL + 'artworks/:id', {id: "@id"}, {
         query: {
             method: "GET",
             isArray: false
@@ -28,7 +28,7 @@ angular
     });
 }])
 .factory('Mediums', ['$resource', 'rootURL', function ($resource, rootURL) {
-    return $resource(rootURL + 'mediums/:id', {}, {
+    return $resource(rootURL + 'mediums/:id', {id: "@id"}, {
         query: {
             method: "GET",
             isArray: false
@@ -39,7 +39,7 @@ angular
     });
 }])
 .factory('Materials', ['$resource', 'rootURL', function ($resource, rootURL) {
-    return $resource(rootURL + 'materials/:id', {}, {
+    return $resource(rootURL + 'materials/:id', {id: "@id"}, {
         query: {
             method: "GET",
             isArray: false
